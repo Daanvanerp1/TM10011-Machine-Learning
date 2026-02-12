@@ -1,5 +1,6 @@
 #pip install pandas numpy seaborn scipy
 
+#%% 
 import pandas
 import numpy
 import seaborn
@@ -11,7 +12,7 @@ data = pandas.read_csv("C:\\Users\\daanv\\Machine Learning\\datasets.csv")
 #Display the first few rows of the dataset as Dataframe
 df = pandas.DataFrame(data)
 print(df.head())
-
+#%%
 #Print nr of datasets (based on the 'dataset' column of the csv file)
 print("Number of datasets:", df['dataset'].nunique())
 
@@ -30,6 +31,8 @@ seaborn.violinplot(x='dataset', y='x', data=df)
 plt.figure()
 seaborn.violinplot(x='dataset', y='y', data=df)
 
+plt.show()
+#%%
 #Determine and print correlation between x and y for each dataset
 print("Correlation between x and y for each dataset:")
 print(df.groupby('dataset').apply(lambda x: scipy.stats.pearsonr(x['x'], x['y'])))
@@ -51,3 +54,4 @@ g = seaborn.FacetGrid(df, col='dataset')
 g.map_dataframe(seaborn.regplot, x='x', y='y')
 
 plt.show()
+# %%
